@@ -8,15 +8,28 @@ set backspace=indent,eol,start
 "store lots of :cmdline history
 set history=1000
 
+set directory=~/tmp,~/temp,.,/tmp
+
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
 
-set nowrap      "dont wrap lines
+"set nowrap      "dont wrap lines
 set linebreak   "wrap lines at convenient points
+set wrapmargin=0
 
+let mapleader = ","
+let localmapleader = ","
+
+"do not write backups
+set nobackup                        
+set nowritebackup    
+
+"create session
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+ 
 "statusline setup
 set statusline=%f       "tail of the filename
 
@@ -172,6 +185,11 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
+"my previous settings
+"FIXME check if needed
+"set smartindent
+"set smarttab
+"set expandtab
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -186,7 +204,9 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set list
 set listchars=tab:\ \ ,extends:>,precedes:<
 
+set nojoinspaces
 set formatoptions-=o "dont continue comments when pushing o/O
+set formatoptions+=r2l
 
 "vertical/horizontal scroll off settings
 set scrolloff=3
@@ -216,7 +236,10 @@ if !has("gui")
 else
     if has("gui_gnome")
         set term=gnome-256color
-        colorscheme desert
+        "colorscheme desert
+        colorscheme torte
+        set guifont=Monospace\ 14
+        set mousehide " Hide mouse after chars typed
     else
         set t_Co=256
         colorscheme vibrantink
@@ -229,7 +252,7 @@ else
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
-				set enc=utf-8
+        set enc=utf-8
     endif
 endif
 
@@ -244,6 +267,8 @@ nnoremap <C-B> :BufExplorer<cr>
 
 "map to fuzzy finder text mate stylez
 nnoremap <c-f> :FuzzyFinderTextMate<CR>
+map <leader>] :FuzzyFinderMruFile<CR>
+map <leader>r :ruby finder.rescan!<CR>
 
 "map Q to something useful
 noremap Q gq
@@ -251,7 +276,15 @@ noremap Q gq
 "make Y consistent with C and D
 nnoremap Y y$
 
-"mark syntax errors with :signs
+" CTRL-T and CTRL-D indent and unindent blocks
+inoremap <C-D> <C-O><LT><LT>
+nnoremap <C-D> <LT><LT>
+vnoremap <C-T> >
+vnoremap <C-D> <LT>
+
+" CTRL-Z undoes even in visual/selection mode
+vnoremap <C-Z> <C-C>
+
 let g:syntastic_enable_signs=1
 
 "snipmate setup
@@ -308,3 +341,25 @@ function! s:HighlightLongLines(width)
         echomsg "Usage: HighlightLongLines [natural number]"
     endif
 endfunction
+
+set encoding=utf-8
+
+"support for switching between encodings directly from GUI
+if has("gui")
+  amenu exMH.set\ &ISO-8859-2 :e ++enc=iso-8859-2<CR>
+  amenu exMH.set\ &CP1250 :e ++enc=cp1250<CR>
+  amenu exMH.encoding\ &UTF-8 :set encoding=utf-8<CR>
+endif
+
+"set spell checker to en, but add cs to the menu as well
+"FIXME it would be nicer to just invoke search for additional dictionaries by
+"default
+setlocal spell spelllang=en_us
+if filereadable($VIM . "/words")
+  set dictionary+=$VIM/words
+endif
+if filereadable("/usr/share/dict/words")
+  set dictionary+=/usr/share/dict/words
+endif
+an 40.335.260 &Tools.&Spelling.Set\ language\ to\ "cs" :set spl=cs spell<CR>
+
