@@ -227,6 +227,7 @@ set ttymouse=xterm2
 "hide buffers when not displayed
 set hidden
 
+colorscheme torte
 if has("gui_running")
 		"tell the term has 256 colors
 		set t_Co=256
@@ -235,6 +236,7 @@ if has("gui_running")
         set term=gnome-256color
         "colorscheme desert
         colorscheme torte
+        "colorscheme vividchalk
         set guifont=Monospace\ 14
         set mousehide " Hide mouse after chars typed
     else
