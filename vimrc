@@ -256,7 +256,7 @@ if has("gui_running")
     if has("gui_gnome")
         set term=gnome-256color
         colorscheme desert
-        "colorscheme vividchalk
+        colorscheme vividchalk
         set guifont=Monospace\ 14
         set mousehide " Hide mouse after chars typed
     else
