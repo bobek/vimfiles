@@ -8,28 +8,44 @@ set backspace=indent,eol,start
 "store lots of :cmdline history
 set history=1000
 
-set directory=~/tmp,~/temp,.,/tmp
-
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
 
 set incsearch   "find the next match as we type the search
 set hlsearch    "hilight searches by default
 
-"set nowrap      "dont wrap lines
-set linebreak   "wrap lines at convenient points
-set wrapmargin=0
+set number      "add line numbers
+set showbreak=...
+set wrap linebreak nolist
+
+"mapping for command key to map navigation thru display lines instead
+"of just numbered lines
+vmap <D-j> gj
+vmap <D-k> gk
+vmap <D-4> g$
+vmap <D-6> g^
+vmap <D-0> g^
+nmap <D-j> gj
+nmap <D-k> gk
+nmap <D-4> g$
+nmap <D-6> g^
+nmap <D-0> g^
+
+"try to make possible to navigate within lines of wrapped lines
+nmap <Down> gj
+nmap <Up> gk
+set fo=l
 
 let mapleader = ","
 let localmapleader = ","
 
 "do not write backups
 set nobackup                        
-set nowritebackup    
+set nowritebackup
 
 "create session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
- 
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize 
+
 "statusline setup
 set statusline=%f       "tail of the filename
 
@@ -72,6 +88,9 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
+
+"turn off needless toolbar on gvim/mvim
+set guioptions-=T
 
 "recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
@@ -185,11 +204,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
-"my previous settings
-"FIXME check if needed
-"set smartindent
-"set smarttab
-"set expandtab
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -201,10 +215,10 @@ set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "display tabs and trailing spaces
-set list
-set listchars=tab:\ \ ,extends:>,precedes:<
+"set list
+"set listchars=tab:\ \ ,extends:>,precedes:<
+" disabling list because it interferes with soft wrap
 
-set nojoinspaces
 set formatoptions-=o "dont continue comments when pushing o/O
 set formatoptions+=r2l
 
@@ -217,6 +231,9 @@ set sidescroll=1
 filetype plugin on
 filetype indent on
 
+"load pathogen managed plugins
+call pathogen#runtime_append_all_bundles()
+
 "turn on syntax highlighting
 syntax on
 
@@ -227,15 +244,18 @@ set ttymouse=xterm2
 "hide buffers when not displayed
 set hidden
 
+"Command-T configuration
+let g:CommandTMaxHeight=10
+let g:CommandTMatchWindowAtTop=1
+
 colorscheme torte
 if has("gui_running")
-		"tell the term has 256 colors
-		set t_Co=256
+    "tell the term has 256 colors
+    set t_Co=256
 
     if has("gui_gnome")
         set term=gnome-256color
-        "colorscheme desert
-        colorscheme torte
+        colorscheme desert
         "colorscheme vividchalk
         set guifont=Monospace\ 14
         set mousehide " Hide mouse after chars typed
@@ -247,13 +267,18 @@ if has("gui_running")
     endif
     if has("gui_mac") || has("gui_macvim")
         set guifont=Menlo:h15
+        " key binding for Command-T to behave properly
+        macmenu &File.New\ Tab key=<nop>
+        map <D-t> :CommandT<CR>
+        " make Mac's Option key behave as the Meta key
+        set invmmta
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
         set enc=utf-8
     endif
 else
-		"dont load csapprox if we no gui support - silences an annoying warning
+    "dont load csapprox if there is no gui support - silences an annoying warning
     let g:CSApprox_loaded = 1
 endif
 
@@ -277,16 +302,25 @@ noremap Q gq
 "make Y consistent with C and D
 nnoremap Y y$
 
+"bindings for ragtag
+inoremap <M-o>       <Esc>o
+inoremap <C-j>       <Down>
+let g:ragtag_global_maps = 1
+
+"mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+
+"key mapping for vimgrep result navigation
+map <A-o> :copen<CR>
+map <A-q> :cclose<CR>
+map <A-j> :cnext<CR>
+map <A-k> :cprevious<CR>
+
 " CTRL-T and CTRL-D indent and unindent blocks
 inoremap <C-D> <C-O><LT><LT>
 nnoremap <C-D> <LT><LT>
 vnoremap <C-T> >
 vnoremap <C-D> <LT>
-
-" CTRL-Z undoes even in visual/selection mode
-vnoremap <C-Z> <C-C>
-
-let g:syntastic_enable_signs=1
 
 "snipmate setup
 try
@@ -342,25 +376,3 @@ function! s:HighlightLongLines(width)
         echomsg "Usage: HighlightLongLines [natural number]"
     endif
 endfunction
-
-set encoding=utf-8
-
-"support for switching between encodings directly from GUI
-if has("gui")
-  amenu exMH.set\ &ISO-8859-2 :e ++enc=iso-8859-2<CR>
-  amenu exMH.set\ &CP1250 :e ++enc=cp1250<CR>
-  amenu exMH.encoding\ &UTF-8 :set encoding=utf-8<CR>
-endif
-
-"set spell checker to en, but add cs to the menu as well
-"FIXME it would be nicer to just invoke search for additional dictionaries by
-"default
-setlocal spell spelllang=en_us
-if filereadable($VIM . "/words")
-  set dictionary+=$VIM/words
-endif
-if filereadable("/usr/share/dict/words")
-  set dictionary+=/usr/share/dict/words
-endif
-an 40.335.260 &Tools.&Spelling.Set\ language\ to\ "cs" :set spl=cs spell<CR>
-
