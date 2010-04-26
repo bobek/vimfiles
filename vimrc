@@ -291,10 +291,8 @@ inoremap <C-L> <C-O>:nohls<CR>
 "map to bufexplorer
 nnoremap <C-B> :BufExplorer<cr>
 
-"map to fuzzy finder text mate stylez
-nnoremap <c-f> :FuzzyFinderTextMate<CR>
-map <leader>] :FuzzyFinderMruFile<CR>
-map <leader>r :ruby finder.rescan!<CR>
+"map to command-t (replaces FuzzyFinder)
+nnoremap <c-f> :CommandT<CR>
 
 "map Q to something useful
 noremap Q gq
