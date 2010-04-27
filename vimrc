@@ -220,7 +220,7 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 " disabling list because it interferes with soft wrap
 
 set formatoptions-=o "dont continue comments when pushing o/O
-set formatoptions+=r2l
+set formatoptions+=r2lcq
 
 "vertical/horizontal scroll off settings
 set scrolloff=3
