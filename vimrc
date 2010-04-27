@@ -41,16 +41,6 @@ nmap <Down> gj
 nmap <Up> gk
 set fo=l
 
-let mapleader = ","
-let localmapleader = ","
-
-"do not write backups
-set nobackup                        
-set nowritebackup
-
-"create session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize 
-
 "statusline setup
 set statusline=%f       "tail of the filename
 
@@ -225,7 +215,6 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 " disabling list because it interferes with soft wrap
 
 set formatoptions-=o "dont continue comments when pushing o/O
-set formatoptions+=r2lcq
 
 "vertical/horizontal scroll off settings
 set scrolloff=3
@@ -320,12 +309,6 @@ map <A-q> :cclose<CR>
 map <A-j> :cnext<CR>
 map <A-k> :cprevious<CR>
 
-" CTRL-T and CTRL-D indent and unindent blocks
-inoremap <C-D> <C-O><LT><LT>
-nnoremap <C-D> <LT><LT>
-vnoremap <C-T> >
-vnoremap <C-D> <LT>
-
 "snipmate setup
 try
   source ~/.vim/snippets/support_functions.vim
@@ -381,24 +364,4 @@ function! s:HighlightLongLines(width)
     endif
 endfunction
 
-set encoding=utf-8
-
-"support for switching between encodings directly from GUI
-if has("gui")
-  amenu exMH.set\ &ISO-8859-2 :e ++enc=iso-8859-2<CR>
-  amenu exMH.set\ &CP1250 :e ++enc=cp1250<CR>
-  amenu exMH.encoding\ &UTF-8 :set encoding=utf-8<CR>
-endif
-
-"set spell checker to en, but add cs to the menu as well
-"FIXME it would be nicer to just invoke search for additional dictionaries by
-"default
-setlocal spell spelllang=en_us
-if filereadable($VIM . "/words")
-  set dictionary+=$VIM/words
-endif
-if filereadable("/usr/share/dict/words")
-  set dictionary+=/usr/share/dict/words
-endif
-an 40.335.260 &Tools.&Spelling.Set\ language\ to\ "cs" :set spl=cs spell<CR>
-
+source ~/.vim/vimrc.local

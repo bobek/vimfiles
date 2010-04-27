@@ -1,0 +1,39 @@
+let mapleader = ","
+let localmapleader = ","
+
+"do not write backups
+set nobackup                        
+set nowritebackup
+
+"create session
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize 
+
+set formatoptions+=r2lcq
+
+" CTRL-T and CTRL-D indent and unindent blocks
+inoremap <C-D> <C-O><LT><LT>
+nnoremap <C-D> <LT><LT>
+vnoremap <C-T> >
+vnoremap <C-D> <LT>
+
+set encoding=utf-8
+
+"support for switching between encodings directly from GUI
+if has("gui")
+  amenu exMH.set\ &ISO-8859-2 :e ++enc=iso-8859-2<CR>
+  amenu exMH.set\ &CP1250 :e ++enc=cp1250<CR>
+  amenu exMH.encoding\ &UTF-8 :set encoding=utf-8<CR>
+endif
+
+"set spell checker to en, but add cs to the menu as well
+"FIXME it would be nicer to just invoke search for additional dictionaries by
+"default
+setlocal spell spelllang=en_us
+if filereadable($VIM . "/words")
+  set dictionary+=$VIM/words
+endif
+if filereadable("/usr/share/dict/words")
+  set dictionary+=/usr/share/dict/words
+endif
+an 40.335.260 &Tools.&Spelling.Set\ language\ to\ "cs" :set spl=cs spell<CR>
+
