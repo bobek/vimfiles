@@ -221,6 +221,9 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
+"necessary on some Linux distros for pathogen to properly load bundles
+filetype off
+
 "load pathogen managed plugins
 call pathogen#runtime_append_all_bundles()
 
@@ -314,7 +317,7 @@ map <A-k> :cprevious<CR>
 try
   source ~/.vim/snippets/support_functions.vim
 catch
-  source $HOMEPATH\vimfiles\snippets\support_functions.vim
+  source ~/vimfiles/snippets/support_functions.vim
 endtry
 autocmd vimenter * call s:SetupSnippets()
 function! s:SetupSnippets()

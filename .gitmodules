@@ -51,4 +51,10 @@
 	url = git://github.com/akitaonrails/Command-T.git
 [submodule "bundle/textile"]
 	path = bundle/textile
-	url = http://github.com/timcharper/textile.vim.git
+	url = git://github.com/timcharper/textile.vim.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
