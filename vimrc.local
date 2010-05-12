@@ -12,6 +12,10 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 set formatoptions+=r2lcq
 
+" use par for formating
+" apt-get install par
+set formatprg=par\ -qgs0
+
 " CTRL-T and CTRL-D indent and unindent blocks
 inoremap <C-D> <C-O><LT><LT>
 nnoremap <C-D> <LT><LT>
