@@ -33,6 +33,9 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
+"add some line space for easy reading
+set linespace=4
+
 "disable visual bell
 set visualbell t_vb=
 
@@ -195,8 +198,8 @@ function! s:Median(nums)
 endfunction
 
 "indent settings
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 
@@ -252,10 +255,10 @@ if has("gui_running")
 
     if has("gui_gnome")
         set term=gnome-256color
+        colorscheme ir_dark
         colorscheme desert
-        colorscheme vividchalk
         set guifont=Monospace\ 14
-        set mousehide " Hide mouse after chars typed
+        set guifont=Inconsolata\ Medium\ 16
     else
         colorscheme railscasts
         set guitablabel=%M%t
@@ -270,6 +273,7 @@ if has("gui_running")
         "map <D-t> :CommandT<CR>
         " make Mac's Option key behave as the Meta key
         set invmmta
+        set transparency=5
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
@@ -367,5 +371,11 @@ function! s:HighlightLongLines(width)
         echomsg "Usage: HighlightLongLines [natural number]"
     endif
 endfunction
+
+"key mapping for window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 source ~/.vim/vimrc.local

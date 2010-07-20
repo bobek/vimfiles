@@ -58,3 +58,12 @@
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/scss-syntax"]
+	path = bundle/scss-syntax
+	url = http://github.com/cakebaker/scss-syntax.vim.git
+[submodule "bundle/markdown-preview"]
+	path = bundle/markdown-preview
+        url = http://github.com/robgleeson/vim-markdown-preview.git
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
