@@ -6,3 +6,4 @@ tags
 tmp/*
 .netrwhist
 *.pyc
+bundle/vim-peepopen

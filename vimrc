@@ -1,5 +1,9 @@
-"Fabio Kung <fabio.kung@gmail.com>
-"
+"necessary on some Linux distros for pathogen to properly load bundles
+filetype off
+
+"load pathogen managed plugins
+call pathogen#runtime_append_all_bundles()
+
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -47,41 +51,49 @@ set fo=l
 "statusline setup
 set statusline=%f       "tail of the filename
 
+"Git
+set statusline+=[%{GitBranch()}]
+
+"RVM
+set statusline+=%{exists('g:loaded_rvm')?rvm#statusline():''}
+
 "display a warning if fileformat isnt unix
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+"set statusline+=%*
 
-"display a warning if file encoding isnt utf-8
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
+"Display a warning if file encoding isnt utf-8
+"set statusline+=%#warningmsg#
+"set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+"set statusline+=%*
 
-set statusline+=%h      "help file flag
-set statusline+=%y      "filetype
-set statusline+=%r      "read only flag
-set statusline+=%m      "modified flag
+"set statusline+=%h      "help file flag
+"set statusline+=%y      "filetype
+"set statusline+=%r      "read only flag
+"set statusline+=%m      "modified flag
 
 "display a warning if &et is wrong, or we have mixed-indenting
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
-
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-
-set statusline+=%{StatuslineLongLineWarning()}
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#error#
+"set statusline+=%{StatuslineTabWarning()}
+"set statusline+=%*
+"
+"set statusline+=%{StatuslineTrailingSpaceWarning()}
+"
+"set statusline+=%{StatuslineLongLineWarning()}
+"
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 "display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
+"set statusline+=%#error#
+"set statusline+=%{&paste?'[paste]':''}
+"set statusline+=%*
 
 set statusline+=%=      "left/right separator
-set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+
+"set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
@@ -224,12 +236,6 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
-"necessary on some Linux distros for pathogen to properly load bundles
-filetype off
-
-"load pathogen managed plugins
-call pathogen#runtime_append_all_bundles()
-
 "load ftplugins and indent files
 filetype plugin on
 filetype indent on
@@ -253,18 +259,17 @@ if has("gui_running")
     "tell the term has 256 colors
     set t_Co=256
 
+    colorscheme railscasts
+    set guitablabel=%M%t
+    set lines=40
+    set columns=115
+
     if has("gui_gnome")
         set term=gnome-256color
         colorscheme ir_dark
-        colorscheme desert
-        set guifont=Monospace\ 14
         set guifont=Inconsolata\ Medium\ 16
-    else
-        colorscheme railscasts
-        set guitablabel=%M%t
-        set lines=40
-        set columns=115
     endif
+
     if has("gui_mac") || has("gui_macvim")
         set guifont=Menlo:h14
         " key binding for Command-T to behave properly
@@ -273,8 +278,12 @@ if has("gui_running")
         "map <D-t> :CommandT<CR>
         " make Mac's Option key behave as the Meta key
         set invmmta
-        set transparency=5
+        try
+          set transparency=5
+        catch
+        endtry
     endif
+
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
         set enc=utf-8
@@ -284,7 +293,12 @@ else
     let g:CSApprox_loaded = 1
 endif
 
-nmap <silent> <Leader>p :NERDTreeToggle<CR>
+" PeepOpen uses <Leader>p as well so you will need to redefine it so something
+" else in your ~/.vimrc file, such as:
+" nmap <silent> <Leader>q <Plug>PeepOpen
+
+silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
+nnoremap <silent> <C-f> :call FindInNERDTree()<CR> 
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
@@ -377,5 +391,11 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+"key mapping for tab navigation
+nmap <Tab> gt
+nmap <S-Tab> gT
+
+let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'} 
 
 source ~/.vim/vimrc.local
