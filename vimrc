@@ -266,7 +266,7 @@ if has("gui_running")
 
     if has("gui_gnome")
         set term=gnome-256color
-        colorscheme ir_dark
+        colorscheme desert
         set guifont=Inconsolata\ Medium\ 16
     endif
 
