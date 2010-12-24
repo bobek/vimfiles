@@ -392,9 +392,18 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+"key mapping for saving file
+nmap <C-s> :w<CR>
+
 "key mapping for tab navigation
 nmap <Tab> gt
 nmap <S-Tab> gT
+
+"Key mapping for textmate-like indentation
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
 
 let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'} 
 
