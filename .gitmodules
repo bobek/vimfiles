@@ -58,10 +58,6 @@
 	path = bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
   ignore = dirty
-[submodule "bundle/pastie"]
-	path = bundle/pastie
-	url = git://github.com/tpope/vim-pastie.git
-  ignore = dirty
 [submodule "bundle/Command-T"]
 	path = bundle/Command-T
 	url = git://github.com/akitaonrails/Command-T.git
@@ -81,10 +77,6 @@
 [submodule "bundle/scss-syntax"]
 	path = bundle/scss-syntax
 	url = http://github.com/cakebaker/scss-syntax.vim.git
-  ignore = dirty
-[submodule "bundle/markdown-preview"]
-	path = bundle/markdown-preview
-        url = http://github.com/robgleeson/vim-markdown-preview.git
   ignore = dirty
 [submodule "bundle/ack"]
 	path = bundle/ack
@@ -106,3 +98,12 @@
 	path = bundle/securemodelines
 	url = git://github.com/ciaranm/securemodelines.git
   ignore = dirty
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule "bundle/vim-textobj-rubybloc"]
+	path = bundle/vim-textobj-rubybloc
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "bundle/vim-preview"]
+	path = bundle/vim-preview
+	url = git://github.com/greyblake/vim-preview.git

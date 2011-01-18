@@ -3,8 +3,35 @@ h1. Vim
 It is recommended that you use gVim in either Windows or Linux and MacVim for
 Mac. Download from:
 
-* (Windows) http://www.vim.org/download.php#pc (gvim72.exe)
-* (Mac) http://code.google.com/p/macvim/downloads/list (snapshot-52)
+* (Windows) http://www.vim.org/download.php#pc (gvim73_46.exe)
+* (Mac) https://github.com/b4winckler/macvim/downloads (snapshot-56)
+
+h1. Bundled Plugins
+
+* "Ack":http://www.vim.org/scripts/script.php?script_id=2572 - type :Ack [search pattern] to search your entire project
+* "Align":http://www.vim.org/scripts/script.php?script_id=294 - align blocks of text using equal sign, make comment boxes and more
+* "bufexplorer":http://www.vim.org/scripts/script.php?script_id=42 - manage your file buffers
+* "Command-T":http://www.vim.org/scripts/script.php?script_id=3025 - the fastest and most intuitive way for opening files in your project
+* "cucumber":http://www.vim.org/scripts/script.php?script_id=2973 - support for cucumber features such as syntax highlight, indentation, etc
+* "endwise":http://www.vim.org/scripts/script.php?script_id=2386 - support to close Ruby blocks such as 'if', 'do' with 'end'
+* "fugitive":http://www.vim.org/scripts/script.php?script_id=2975 - support for Git, adding convenient commands such as :Gstatus, :Gread, :Gmove
+* "haml":http://www.vim.org/scripts/script.php?script_id=1773 - syntax highlight for HAML
+* "markdown":http://www.vim.org/scripts/script.php?script_id=1242 - syntax highlight for Markdown
+* "NERD_commenter":http://www.vim.org/scripts/script.php?script_id=1218 - support to comment lines of code
+* "NERD_tree":http://www.vim.org/scripts/script.php?script_id=1658 - project pane that you can open with [leader] p
+* "ragtag":http://www.vim.org/scripts/script.php?script_id=1896 - easier way to create tags for html, erb, etc
+* "rails":http://www.vim.org/scripts/script.php?script_id=1567 - lot's of tools to make it easier to manage your Rails projects
+* "snipmate":https://github.com/akitaonrails/snipmate.vim - support for textmate-like snippets for several languages
+* "supertab":http://www.vim.org/scripts/script.php?script_id=1643 - pseudo auto-complete with tab
+* "surround":http://www.vim.org/scripts/script.php?script_id=1697 - add, change, remove surrounding parentheses, brackets, quotes, etc
+* "syntastic":http://www.vim.org/scripts/script.php?script_id=2736 - checks for syntax errors in many languages
+* "textile":http://www.vim.org/scripts/script.php?script_id=2305 - syntax highlight for Textile
+* "vim-coffee-script":https://github.com/kchmck/vim-coffee-script - syntax highlight for Coffee Script
+* "vim-preview":http://www.vim.org/scripts/script.php?script_id=3344 - [leader] P previews Markdown, Rdoc, Textile, html. Requires Ruby and other gems.
+* "vim-ruby-sinatra":https://github.com/hallison/vim-ruby-sinatra - syntax highlight for Sinatra
+* "vim-ruby":https://github.com/vim-ruby/vim-ruby/wiki - syntax highlight, smart identation, auto-complete for Ruby
+* "vim-textobj-rubyblock":http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/ - smart block selection in Ruby code
+* "vividchalk":http://www.vim.org/scripts/script.php?script_id=1891 - color scheme inspired by the classic Vibrant for Textmate
 
 h1. Usage
 
@@ -26,21 +53,23 @@ git submodule init
 git submodule update
 </code></pre>
 
-Now just copy (or symlink) the .vim/vimrc file as .vimrc (Mac/Linux)
-or copy as _vimrc (Windows) in your home directory. In Mac and Linux, the 
-easiest thing to do is:
+Now you should create a new <tt>.vimrc</tt> file in your home directory that
+loads the pre-configured one that comes bundled in this package. You can do it
+on Linux/Mac like this:
 
 <pre><code>
-ln -s ~/.vim/vimrc ~/.vimrc
-</pre></code>
-
-If you already have a custom .vimrc file, append the following lines to
-load everything else along with your personal hacks:
-
-<pre><code>
-source ~/.vim/vimrc      "linux
-source ~/vimfiles/vimrc  "windows
+echo "source ~/.vim/vimrc > ~/.vimrc"
 </code></pre>
+
+On Windows you should create a <tt>_vimrc</tt> (underline instead of dot) and add
+the following line inside:
+
+<pre><code>
+source ~/vimfiles/vimrc
+</code></pre>
+
+This way you can override the default configuration by adding your own inside
+this file.
 
 h2. Help Tags
 
@@ -90,6 +119,9 @@ installed. A binary for Windows is already bundled so it should just
 work. I've also included a binary compiled for Ruby Enterprise Edition,
 but if you are using other Ruby distros, you will need to recompile.
 
+There are binaries for Mac and Windows. The Mac version is compiled
+against the default system Ruby for Mac OS X 10.6.5. The Windows version
+is compiled against Ruby Installer 1.8.7-p330.
 
 h2. Learn Vim
 
