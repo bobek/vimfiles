@@ -43,3 +43,10 @@ if filereadable("/usr/share/dict/words")
 endif
 an 40.335.260 &Tools.&Spelling.Set\ language\ to\ "cs" :set spl=cs spell<CR>
 
+"set railscasts colorscheme when running vim in gnome terminal
+if $COLORTERM == 'gnome-terminal'
+    set term=xterm
+    colorscheme torte
+else
+    colorscheme torte
+endif
