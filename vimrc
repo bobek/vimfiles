@@ -303,6 +303,9 @@ map <A-q> :cclose<CR>
 map <A-j> :cnext<CR>
 map <A-k> :cprevious<CR>
 
+"key mapping for Gundo
+nnoremap <F4> :GundoToggle<CR>
+
 "snipmate setup
 try
   source ~/.vim/snippets/support_functions.vim
