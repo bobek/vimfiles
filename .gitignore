@@ -1,7 +1,7 @@
 .DS_Store
 tags
 *~
-*.swp
+*.sw*
 .VimballRecord
 tmp/*
 .netrwhist

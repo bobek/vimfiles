@@ -107,3 +107,21 @@
 [submodule "bundle/vim-preview"]
 	path = bundle/vim-preview
 	url = git://github.com/greyblake/vim-preview.git
+[submodule "bundle/abolish"]
+	path = bundle/abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "bundle/liftweb"]
+	path = bundle/liftweb
+	url = git://github.com/Shadowfiend/liftweb-vim.git
+[submodule "bundle/scala"]
+	path = bundle/scala
+	url = git://github.com/akhil/scala-vim-bundle.git
+[submodule "bundle/grails-vim"]
+	path = bundle/grails-vim
+	url = git://github.com/felipero/grails-vim.git
+[submodule "bundle/clojure"]
+	path = bundle/clojure
+	url = git://github.com/vim-scripts/VimClojure.git
+[submodule "bundle/zencoding-vim"]
+	path = bundle/zencoding-vim
+	url = git://github.com/mattn/zencoding-vim.git

@@ -32,6 +32,7 @@ h1. Bundled Plugins
 * "vim-ruby":https://github.com/vim-ruby/vim-ruby/wiki - syntax highlight, smart identation, auto-complete for Ruby
 * "vim-textobj-rubyblock":http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/ - smart block selection in Ruby code
 * "vividchalk":http://www.vim.org/scripts/script.php?script_id=1891 - color scheme inspired by the classic Vibrant for Textmate
+* "Zencoding":http://www.vim.org/scripts/script.php?script_id=2981 - powerful way for HTML abbreviations (learn here: http://code.google.com/p/zen-coding/). Type abbreviation and press Ctrl+Y+comma (c-y ,)
 
 h1. Usage
 
@@ -49,8 +50,7 @@ git clone git://github.com/akitaonrails/vimfiles.git ~/.vim
 Then 'cd' into the repo and run this to get the snippets submodule:
 
 <pre><code>
-git submodule init
-git submodule update
+git submodule update --init
 </code></pre>
 
 Now you should create a new <tt>.vimrc</tt> file in your home directory that
@@ -58,7 +58,7 @@ loads the pre-configured one that comes bundled in this package. You can do it
 on Linux/Mac like this:
 
 <pre><code>
-echo "source ~/.vim/vimrc > ~/.vimrc"
+echo "source ~/.vim/vimrc" > ~/.vimrc
 </code></pre>
 
 On Windows you should create a <tt>_vimrc</tt> (underline instead of dot) and add
@@ -69,6 +69,23 @@ source ~/vimfiles/vimrc
 </code></pre>
 
 This way you can override the default configuration by adding your own inside
+this file.
+
+You should also create a new <tt>.gvimrc</tt> file in your home directory. You can do 
+it on Linux/Mac like this:
+
+<pre><code>
+echo "source ~/.vim/gvimrc" > ~/.gvimrc
+</code></pre>
+
+On Windows you should create a <tt>_gvimrc</tt> (underline instead of dot) and add
+the following line inside:
+
+<pre><code>
+source ~/vimfiles/gvimrc
+</code></pre>
+
+This way you can override the default GUI configuration by adding your own inside
 this file.
 
 h2. Help Tags
@@ -93,6 +110,12 @@ In Ubuntu, for example, you will have to do:
 apt-get install exuberant-ctags ncurses-term
 </code></pre>
 
+In OS X, you can install ctags with homebrew
+
+<pre><code>
+brew install ctags
+</code></pre>
+
 On Windows you have to download Ctags and add ctags.exe in your PATH.
 
 Mac OS X and most Linux distros come with Ruby already. If you're in Windows
@@ -109,6 +132,7 @@ You may have problems in Mac/Linux because this plugin requires a native
 extension, so you will have to do this:
 
 <pre><code>
+rvm use system # use this line if using rvm
 cd ~/.vim/bundle/Command-T/ruby/command-t
 ruby extconf.rb
 make
