@@ -11,6 +11,7 @@ h1. Bundled Plugins
 * "Ack":http://www.vim.org/scripts/script.php?script_id=2572 - type :Ack [search pattern] to search your entire project
 * "Align":http://www.vim.org/scripts/script.php?script_id=294 - align blocks of text using equal sign, make comment boxes and more
 * "bufexplorer":http://www.vim.org/scripts/script.php?script_id=42 - manage your file buffers
+* "ColorV":http://www.vim.org/scripts/script.php?script_id=3597 - color picker with support for GTK picker dialog and replacing color under cursor
 * "Command-T":http://www.vim.org/scripts/script.php?script_id=3025 - the fastest and most intuitive way for opening files in your project
 * "cucumber":http://www.vim.org/scripts/script.php?script_id=2973 - support for cucumber features such as syntax highlight, indentation, etc
 * "endwise":http://www.vim.org/scripts/script.php?script_id=2386 - support to close Ruby blocks such as 'if', 'do' with 'end'

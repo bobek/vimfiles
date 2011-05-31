@@ -134,3 +134,6 @@
 [submodule "bundle/jade"]
 	path = bundle/jade
 	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "bundle/colorv"]
+	path = bundle/colorv
+	url = git://github.com/rykka/ColorV.git
