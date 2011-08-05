@@ -1,4 +1,3 @@
-.DS_Store
 tags
 *~
 *.sw*
@@ -7,3 +6,16 @@ tmp/*
 .netrwhist
 *.pyc
 bundle/vim-peepopen
+.DS_Store
+*.log
+*.tmp
+*.swp
+*.old
+*.bkp
+*.zip
+*.rar
+*.arj
+*.[t]gz
+*.[t]bz2
+tmp/
+log/
