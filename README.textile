@@ -106,7 +106,7 @@ h2. Dependencies
 
 You will need these dependencies figured out:
 
-* Ruby (for the fuzzy finder plugin)
+* Ruby (for the Command-T plugin)
 * Exuberant Ctags (http://ctags.sourceforge.net/)
 * Ncurses-term (in Linux only)
 
