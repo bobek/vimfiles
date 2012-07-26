@@ -6,7 +6,7 @@ filetype on
 filetype off
 
 "load pathogen managed plugins
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
@@ -219,9 +219,9 @@ set ttymouse=xterm2
 "hide buffers when not displayed
 set hidden
 
-"Command-T configuration
-let g:CommandTMaxHeight=10
-let g:CommandTMatchWindowAtTop=1
+"Activate smartcase
+set ic
+set smartcase
 
 colorscheme torte
 if has("gui_running")
@@ -241,11 +241,6 @@ if has("gui_running")
 
     if has("gui_mac") || has("gui_macvim")
         set guifont=Menlo:h14
-        " key binding for Command-T to behave properly
-        " uncomment to replace the Mac Command-T key to Command-T plugin
-        "macmenu &File.New\ Tab key=<nop>
-        "map <D-t> :CommandT<CR>
-        " make Mac's Option key behave as the Meta key
     endif
 
     if has("gui_win32") || has("gui_win32s")
@@ -275,7 +270,6 @@ endif
 " nmap <silent> <Leader>q <Plug>PeepOpen
 
 silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
-nnoremap <silent> <C-f> :call FindInNERDTree()<CR>
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
@@ -444,5 +438,7 @@ inoremap <Esc>A <up>
 inoremap <Esc>B <down>
 inoremap <Esc>C <right>
 inoremap <Esc>D <left>
+
+map <C-t> :CtrlP<CR>
 
 source ~/.vim/vimrc.local

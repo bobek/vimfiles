@@ -12,7 +12,7 @@ h1. Bundled Plugins
 * "Align":http://www.vim.org/scripts/script.php?script_id=294 - align blocks of text using equal sign, make comment boxes and more
 * "bufexplorer":http://www.vim.org/scripts/script.php?script_id=42 - manage your file buffers
 * "ColorV":http://www.vim.org/scripts/script.php?script_id=3597 - color picker with support for GTK picker dialog and replacing color under cursor
-* "Command-T":http://www.vim.org/scripts/script.php?script_id=3025 - the fastest and most intuitive way for opening files in your project
+* "CtrlP":https://github.com/kien/ctrlp.vim - replaces CommandT as a better fuzzy finder
 * "cucumber":http://www.vim.org/scripts/script.php?script_id=2973 - support for cucumber features such as syntax highlight, indentation, etc
 * "endwise":http://www.vim.org/scripts/script.php?script_id=2386 - support to close Ruby blocks such as 'if', 'do' with 'end'
 * "fugitive":http://www.vim.org/scripts/script.php?script_id=2975 - support for Git, adding convenient commands such as :Gstatus, :Gread, :Gmove
@@ -21,6 +21,7 @@ h1. Bundled Plugins
 * "markdown":http://www.vim.org/scripts/script.php?script_id=1242 - syntax highlight for Markdown
 * "NERD_commenter":http://www.vim.org/scripts/script.php?script_id=1218 - support to comment lines of code
 * "NERD_tree":http://www.vim.org/scripts/script.php?script_id=1658 - project pane that you can open with [leader] p
+* "NrrwRgn":https://github.com/chrisbra/NrrwRgn - A Narrow Region Plugin for vim (like Emacs Narrow Region)
 * "ragtag":http://www.vim.org/scripts/script.php?script_id=1896 - easier way to create tags for html, erb, etc
 * "rails":http://www.vim.org/scripts/script.php?script_id=1567 - lot's of tools to make it easier to manage your Rails projects
 * "snipmate":https://github.com/akitaonrails/snipmate.vim - support for textmate-like snippets for several languages
@@ -29,7 +30,9 @@ h1. Bundled Plugins
 * "syntastic":http://www.vim.org/scripts/script.php?script_id=2736 - checks for syntax errors in many languages
 * "textile":http://www.vim.org/scripts/script.php?script_id=2305 - syntax highlight for Textile
 * "vim-bundler":https://github.com/tpope/vim-bundler - Bundler support for Vim
+* "vim-buffergator":https://github.com/jeetsukumaran/vim-buffergator - Vim plugin to list, select and switch between buffers.
 * "vim-coffee-script":https://github.com/kchmck/vim-coffee-script - syntax highlight for Coffee Script
+* "vim-easymotion":https://github.com/Lokaltog/vim-easymotion - Vim motions on speed!
 * "vim-jade":https://github.com/statianzo/vim-jade - Vim syntax highlighting for the Jade templating engine
 * "vim-jquery":https://github.com/itspriddle/vim-jquery - Vim syntax file to add some colorations for jQuery keywords and css selectors
 * "vim-preview":http://www.vim.org/scripts/script.php?script_id=3344 - [leader] P previews Markdown, Rdoc, Textile, html. Requires Ruby and other gems.
@@ -37,8 +40,10 @@ h1. Bundled Plugins
 * "vim-ruby":https://github.com/vim-ruby/vim-ruby/wiki - syntax highlight, smart identation, auto-complete for Ruby
 * "vim-rvm":https://github.com/tpope/vim-rvm - RVM support for Vim
 * "vim-textobj-rubyblock":http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/ - smart block selection in Ruby code
+* "vim-vroom":https://github.com/skalnik/vim-vroom - A vim plugin for running your Ruby tests
 * "vividchalk":http://www.vim.org/scripts/script.php?script_id=1891 - color scheme inspired by the classic Vibrant for Textmate
 * "Zencoding":http://www.vim.org/scripts/script.php?script_id=2981 - powerful way for HTML abbreviations (learn here: http://code.google.com/p/zen-coding/). Type abbreviation and press Ctrl+Y+comma (c-y ,)
+* "ZoomWin":https://github.com/vim-scripts/ZoomWin - Zoom in/out of windows (toggle between one window and multi-window)
 
 h1. Usage
 
@@ -126,32 +131,6 @@ On Windows you have to download Ctags and add ctags.exe in your PATH.
 
 Mac OS X and most Linux distros come with Ruby already. If you're in Windows
 look for Luis Lavena's latest Ruby Installer (http://rubyforge.org/projects/rubyinstaller/)
-
-h1. IMPORTANT: Command-T
-
-The latest version replaces the old Fuzzy Finder with a new one called
-"Command-T" form wincent.com. I've replaced the old "Command-T" key
-binding that used to open new tabs and assigned it to this new plugin
-so it behaves the same as Textmate.
-
-You may have problems in Mac/Linux because this plugin requires a native
-extension, so you will have to do this:
-
-<pre><code>
-rvm use system # use this line if using rvm
-cd ~/.vim/bundle/Command-T/ruby/command-t
-ruby extconf.rb
-make
-</code></pre>
-
-This means that you need to have your Ruby source files and GCC also
-installed. A binary for Windows is already bundled so it should just
-work. I've also included a binary compiled for Ruby Enterprise Edition,
-but if you are using other Ruby distros, you will need to recompile.
-
-There are binaries for Mac and Windows. The Mac version is compiled
-against the default system Ruby for Mac OS X 10.6.5. The Windows version
-is compiled against Ruby Installer 1.8.7-p330.
 
 h2. Ubuntu 11.04 and/or Vim 7.3.35
 
