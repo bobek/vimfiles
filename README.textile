@@ -44,6 +44,7 @@ h1. Bundled Plugins
 * "vividchalk":http://www.vim.org/scripts/script.php?script_id=1891 - color scheme inspired by the classic Vibrant for Textmate
 * "Zencoding":http://www.vim.org/scripts/script.php?script_id=2981 - powerful way for HTML abbreviations (learn here: http://code.google.com/p/zen-coding/). Type abbreviation and press Ctrl+Y+comma (c-y ,)
 * "ZoomWin":https://github.com/vim-scripts/ZoomWin - Zoom in/out of windows (toggle between one window and multi-window)
+* "vim-slim":https://github.com/bbommarito/vim-slim - syntax highlight for Slim
 
 h1. Usage
 
